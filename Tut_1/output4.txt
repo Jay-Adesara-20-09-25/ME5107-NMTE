@@ -1,0 +1,23 @@
+Performance Comparison
+Case A: x (y^T z)
+Case B: (x y^T) z
+---------------------
+m = 256, n = 8
+Case A time: 0.000196 seconds
+Case B time: 0.015462 seconds
+
+m = 512, n = 8
+Case A time: 0.000277 seconds
+Case B time: 0.049242 seconds
+
+m = 1024, n = 8
+Case A time: 0.000368 seconds
+Case B time: 0.14783 seconds
+
+m = 2048, n = 8
+Case A time: 0.001139 seconds
+Case B time: 0.637627 seconds
+
+m = 4096, n = 8
+Case A time: 0.00153 seconds
+Case B time: 2.32494 seconds

@@ -1,0 +1,16 @@
+Enter the size of the square matrix (n): 3
+
+Enter elements of Matrix A:
+1 2 3 4 5 6 7 8 9
+
+Matrix (A + A^T):
+2 6 10 
+6 10 14 
+10 14 18 
+
+Transpose of (A + A^T):
+2 6 10 
+6 10 14 
+10 14 18 
+
+As we can see, (A + A^T) is symmetric.

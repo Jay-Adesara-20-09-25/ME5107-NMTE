@@ -34,23 +34,35 @@ void forward_elimination(vector<vector<double>> &A, vector<vector<double>> &b, i
     // Loop over pivot rows
     for (int i = 0; i < n - 1; i++)
     {
+        int pivot_index = i;
+        double max_value = fabs(A[i][i]);
+
+        for (int t = i + 1; t < n; t++)
+        {
+            if (fabs(A[t][i]) > max_value)
+            {
+                max_value = fabs(A[t][i]);
+                pivot_index = t;
+            }
+        }
+
+        if (pivot_index != i)
+        {
+            swap(A[i], A[pivot_index]);
+            swap(b[i][0], b[pivot_index][0]);
+        }
+        
+        // Check for zero pivot
+        if (fabs(A[i][i]) < 1e-12)
+        {
+            cout << "Matrix is singular.\n";
+            return;
+        }
+        
         // Eliminate entries below pivot
+        
         for (int j = i + 1; j < n; j++)
         {
-            int maxi = A[i][i];
-            int maxiindex = i;
-            for(int t = i+1;t<n;t++){
-                if(maxi<abs(A[t][i])){
-                    maxi = abs(A[t][i]);
-                    maxiindex = t;
-                }
-            }
-            if(maxiindex!=i){
-                for(int m=0;m<n;m++){
-                    swap(A[i][m], A[maxiindex][m]);
-                }
-                swap(b[i][0], b[maxiindex][0]);
-            }
             double temp = A[j][i] / A[i][i]; // elimination factor
             A[j][i] = 0;                     // explicitly set lower element to zero
 

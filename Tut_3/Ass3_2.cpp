@@ -1,7 +1,7 @@
 // ME23B002 - Jay Adesara
 
 #include<bits/stdc++.h>
-#include<chrono>
+#include<ctime>
 
 using namespace std;
 
@@ -121,15 +121,6 @@ vector<double> vector_subtract(vector<double> &a,
     Main Program
     Solves the block tridiagonal system described
     in Programming Q2 of the assignment.
-
-    Matrix structure :
-
-        | D1  I   0  ... |
-        | I   D2  I  ... |
-        | 0   I   D3 ... |
-        | ...          DN|
-
-    where each Di is a tridiagonal block (5×5).
 */
 int main()
 {
@@ -145,12 +136,11 @@ int main()
     for(int N:Nvalues)
     {
 
-        // Start timing
-        auto start=chrono::high_resolution_clock::now();
+        // Start timing using clock()
+        clock_t start = clock();
 
         /*
             Step 1 : Construct block matrices Di
-            Each Di is a tridiagonal matrix
         */
         vector<vector<vector<double>>> D(
         N,vector<vector<double>>(Nblk,vector<double>(Nblk,0)));
@@ -170,8 +160,6 @@ int main()
 
         /*
             Step 2 : Construct RHS vectors fi
-            fi =
-            [1 , 1/Nblk , ... , 1/Nblk , 2]
         */
         vector<vector<double>> f(N,vector<double>(Nblk,1.0/Nblk));
 
@@ -184,12 +172,6 @@ int main()
 
         /*
             Step 3 : Forward Block Elimination
-
-            Convert system into upper block triangular form
-
-            D_i^{-1} f_i
-            D_{i+1} = D_{i+1} − D_i^{-1}
-            f_{i+1} = f_{i+1} − D_i^{-1} f_i
         */
         for(int i=0;i<N-1;i++)
         {
@@ -205,7 +187,6 @@ int main()
 
         /*
             Step 4 : Back Substitution
-            Solve for solution blocks xi
         */
         vector<vector<double>> x(N,vector<double>(Nblk,0));
 
@@ -223,16 +204,13 @@ int main()
 
 
         // Stop timing
-        auto end=chrono::high_resolution_clock::now();
+        clock_t end = clock();
 
-        chrono::duration<double> elapsed=end-start;
+        double elapsed = (double)(end-start)/CLOCKS_PER_SEC;
 
 
         /*
             Step 5 : Store data for plotting
-
-            Assignment requires plotting
-            x_{i,j} vs j where i = N/2
         */
         int mid=N/2;
 
@@ -241,14 +219,13 @@ int main()
 
 
         /*
-            Step 6 : Store runtime for
-            Time vs N plot
+            Step 6 : Store runtime for Time vs N plot
         */
-        timeFile<<N<<" "<<elapsed.count()<<endl;
+        timeFile<<N<<" "<<elapsed<<endl;
 
 
-        // Print runtime in terminal
-        cout<<"N = "<<N<<"  Time = "<<elapsed.count()<<endl;
+        // Print runtime
+        cout<<"N = "<<N<<"  Time = "<<elapsed<<endl;
 
     }
 

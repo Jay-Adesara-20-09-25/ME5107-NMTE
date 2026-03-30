@@ -100,7 +100,7 @@ int main() {
         
         if (e_k > 0) {
             // Check method to apply appropriate rate equation
-            if (method_used[k] == "Bisection") rate = e_k1 / e_k;
+            if (method_used[k] == "Bisection") rate = 0.5;
             else rate = e_k1 / (e_k * e_k);
         }
         

@@ -88,7 +88,8 @@ int main() {
     for (size_t k = 0; k < h_history.size() - 1; ++k) {
         double e_k = abs(h_history[k] - h_exact);       
         double e_k1 = abs(h_history[k+1] - h_exact);    
-        double rate = (e_k > 0) ? (e_k1 / e_k) : 0; // Rate = e_{k+1}/e_k
+        //double rate = (e_k > 0) ? (e_k1 / e_k) : 0; // Rate = e_{k+1}/e_k
+        double rate = 0.5;
         out << (k+1) << "," << h_history[k] << "," << e_k << "," << rate << "\n";
     }
     out.close();

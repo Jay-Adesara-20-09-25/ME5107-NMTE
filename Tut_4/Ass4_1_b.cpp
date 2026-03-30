@@ -46,7 +46,7 @@ void calculate_f_and_df(double h, double &f_val, double &df_val) {
 }
 
 int main() {
-    double h_current = 5000.0; // Given initial guess
+    double h_current = -15000.0; // Given initial guess
     double epsilon = 1e-5;
     
     vector<double> h_history;
@@ -74,7 +74,7 @@ int main() {
     for (size_t k = 0; k < h_history.size() - 1; ++k) {
         double e_k = abs(h_history[k] - h_exact);
         double e_k1 = abs(h_history[k+1] - h_exact);
-        double rate = (e_k > 0) ? (e_k1 / (e_k * e_k)) : 0; // Rate = e_{k+1}/e_k^2
+        double rate = abs(e_k1 / (e_k * e_k)); // Rate = e_{k+1}/e_k^2
         out << (k) << "," << h_history[k] << "," << e_k << "," << rate << "\n";
     }
     out.close();

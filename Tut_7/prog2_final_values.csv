@@ -1,0 +1,10 @@
+method,h,y1_t3000,y2_t3000,y3_t3000
+Explicit Euler,0.001,-inf,-nan,inf
+Explicit Euler,0.0001,-inf,-nan,inf
+Explicit Euler,1e-05,-inf,-nan,inf
+Trapezoidal,0.001,0.21179,1.07043e-06,0.788208
+Trapezoidal,0.0001,0.211734,1.07007e-06,0.788265
+Trapezoidal,1e-05,0.211724,1.07001e-06,0.788275
+RK4,0.001,-nan,-nan,-nan
+RK4,0.0001,-inf,-nan,inf
+RK4,1e-05,-nan,-nan,-nan
